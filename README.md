@@ -51,4 +51,4 @@ View the project roadmap [here](https://github.com/unexpected-lion/ourglass/issu
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+See [CONTRIBUTING.md](https://github.com/unexpected-lion/ourglass/blob/master/contributing.md) for contribution guidelines.
