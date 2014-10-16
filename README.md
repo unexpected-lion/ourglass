@@ -1,4 +1,4 @@
-# OurGlass
+# OurGlass [![Build Status](https://travis-ci.org/unexpected-lion/ourglass.svg?branch=master)](https://travis-ci.org/unexpected-lion/ourglass)
 
 Ourglass is a fun team-building game where users work together to prevent sand from spilling all over the place! Users collaboratively race against the clock while working together to direct the flow of sand towards a target.
 
