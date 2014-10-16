@@ -2,12 +2,35 @@
   "name": "ourglass",
   "version": "0.1.0",
   "description": "Collaborative real-time physics game",
+  "author": "UNEXPECTED LION",
+  "contributors": [
+    {
+      "name": "John Heroy",
+      "email": "johnheroy@gmail.com"
+    },
+    {
+      "name": "Spencer Handley",
+      "email": "spencerhandley@gmail.com"
+    },
+    {
+      "name": "Katherine Gilhooley",
+      "email": "k.gilhooley@gmail.com"
+    },
+    {
+      "name": "Aric Huang",
+      "email": "arichuang@gmail.com"
+    },
+    {
+      "name": "Nick Stefan",
+      "email": "nickstefan12@gmail.com"
+    }
+  ],
   "main": "index.html",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -18,10 +41,12 @@
     "realtime",
     "Firebase"
   ],
-  "author": "John Heroy <johnheroy@gmail.com> (http://johnheroy.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/unexpected-lion/ourglass/issues"
   },
-  "homepage": "https://github.com/unexpected-lion/ourglass"
+  "homepage": "https://github.com/unexpected-lion/ourglass",
+  "devDependencies": {
+    "jasmine": "^2.0.1"
+  }
 }
