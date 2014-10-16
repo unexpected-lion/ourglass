@@ -1,5 +1,5 @@
 {
-  "firebase": "ourglass-test",
+  "firebase": "ourglass",
   "public": ".",
   "ignore": [
     "firebase.json",

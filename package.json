@@ -1,0 +1,27 @@
+{
+  "name": "ourglass",
+  "version": "0.1.0",
+  "description": "Collaborative real-time physics game",
+  "main": "index.html",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unexpected-lion/ourglass.git"
+  },
+  "keywords": [
+    "Gaming",
+    "realtime",
+    "Firebase"
+  ],
+  "author": "John Heroy <johnheroy@gmail.com> (http://johnheroy.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unexpected-lion/ourglass/issues"
+  },
+  "homepage": "https://github.com/unexpected-lion/ourglass"
+}
