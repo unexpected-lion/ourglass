@@ -1,0 +1,25 @@
+{
+  "name": "ourglass",
+  "version": "0.1.0",
+  "homepage": "https://github.com/unexpected-lion/ourglass",
+  "authors": [
+    "John Heroy <johnheroy@gmail.com>"
+  ],
+  "description": "Collaborative real-time physics game",
+  "main": "index.html",
+  "keywords": [
+    "Gaming",
+    "firebase",
+    "realtime",
+    "teamwork"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
