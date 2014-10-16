@@ -19,13 +19,10 @@ Ourglass is a fun team-building game where users work together to prevent sand f
 1. [Contributing](#contributing)
 
 ## Usage
-1. Clone the repo \git clone https://github.com/unexpected-lion/ourglass.git\
-1. \npm install\
-1. \grunt serve\
+1. Clone the repo `git clone https://github.com/unexpected-lion/ourglass.git`
+1. `npm install`
+1. `grunt serve`
 1. Shake ya' bad self. 
-```sh
-grunt serve
-```
 
 ## Requirements
 
