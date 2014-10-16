@@ -1,0 +1,9 @@
+{
+  "firebase": "ourglass-test",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/bower_components/**"
+  ]
+}
