@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - 0.10
 install:
-  - npm install -g mocha
-  - npm install -g bower
-  - bower install
+  - sudo npm install -g mocha
+  - sudo npm install -g bower
+  - sudo bower install
 after_success:
-  - npm install -g firebase-tools
+  - sudo npm install -g firebase-tools
   - if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then echo -e "${FIREBASE_EMAIL}\n${FIREBASE_PASSWORD}" | firebase deploy; fi
