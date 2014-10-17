@@ -7,4 +7,4 @@ install:
   - bower install
 after_success:
   - sudo $(which npm) install -g firebase-tools
-  - if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then echo -e "${FIREBASE_EMAIL}\n${FIREBASE_PASSWORD}" | sudo $(which firebase) deploy; fi
+  - if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then echo -e "${FIREBASE_EMAIL}\n${FIREBASE_PASSWORD}" | sudo firebase deploy; fi
