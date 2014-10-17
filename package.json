@@ -48,5 +48,9 @@
   "homepage": "https://github.com/unexpected-lion/ourglass",
   "devDependencies": {
     "jasmine": "^2.0.1"
+  },
+  "dependencies": {
+    "coquette": "^0.4.5",
+    "d3": "^3.4.12"
   }
 }
