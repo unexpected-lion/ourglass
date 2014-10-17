@@ -30,7 +30,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,6 @@
   },
   "homepage": "https://github.com/unexpected-lion/ourglass",
   "devDependencies": {
-    "jasmine": "^2.0.1"
+    "mocha": "^1.21.5"
   }
 }
