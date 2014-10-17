@@ -21,5 +21,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "coquette": "*",
+    "box2d.js": "*"
+  }
 }
