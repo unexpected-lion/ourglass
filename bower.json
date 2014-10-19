@@ -23,7 +23,6 @@
     "tests"
   ],
   "dependencies": {
-    "coquette": "*",
-    "box2d.js": "*"
+    "coquette": "*"
   }
 }

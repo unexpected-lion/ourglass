@@ -10,7 +10,7 @@ var Player = function(game, settings) {
 
 Player.prototype = {
   draw: function(ctx) {
-    ctx.fillStyle = settings.color;
+    ctx.fillStyle = this.color;
     ctx.fillRect(this.center.x - this.size.x / 2,
      this.center.y - this.size.y / 2,
      this.size.x,
