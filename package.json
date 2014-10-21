@@ -47,6 +47,9 @@
   },
   "homepage": "https://github.com/unexpected-lion/ourglass",
   "devDependencies": {
+  },
+  "dependencies": {
+    "gulp-mocha": "^1.1.1",
     "mocha": "^1.21.5"
   }
 }
