@@ -46,9 +46,9 @@
     "url": "https://github.com/unexpected-lion/ourglass/issues"
   },
   "homepage": "https://github.com/unexpected-lion/ourglass",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
+    "chai": "^1.9.2",
     "gulp-mocha": "^1.1.1",
     "mocha": "^1.21.5"
   }
