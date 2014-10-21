@@ -41,9 +41,11 @@ gulp.task('scripts', function() {
 
 // watch for changes
 gulp.task('watch', function() {
-    gulp.watch('js/*.js', ['lint', 'mocha', 'scripts']);
+    // gulp.watch('js/*.js', ['lint', 'mocha', 'scripts']);
+    gulp.watch('js/*.js', ['lint', 'scripts']);
     gulp.watch('scss/*.scss', ['sass']);
 });
 
 // default task
-gulp.task('default', ['lint', 'sass', 'mocha', 'scripts', 'watch']);
+// gulp.task('default', ['lint', 'sass', 'mocha', 'scripts', 'watch']);
+gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
