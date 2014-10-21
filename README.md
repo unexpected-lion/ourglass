@@ -20,17 +20,20 @@ Ourglass is a fun team-building game where users work together to prevent sand f
 
 ## Usage
 1. Clone the repo `git clone https://github.com/unexpected-lion/ourglass.git`
+1. `npm install -g bower`
+1. `bower install`
 1. `npm install`
-1. `grunt serve`
+1. `npm install -g gulp`
+1. `gulp`
 1. Shake ya' bad self. 
 
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Coquette
+- Firebase
+- Mocha (testing)
+
 
 ## Development
 
@@ -45,6 +48,8 @@ bower install
 ```
 
 ### Roadmap
+
+[![Stories in Ready](https://badge.waffle.io/unexpected-lion/ourglass.svg?label=ready&title=Ready)](http://waffle.io/unexpected-lion/ourglass)
 
 View the project roadmap [here](https://github.com/unexpected-lion/ourglass/issues)
 
