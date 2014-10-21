@@ -10,6 +10,8 @@ var SimpleGame = function(autoFocus) {
   // render a new player that will respond to user's keyboard
   this.c.entities.create(Player, { center: { x:256, y:110 }});
 
+  this.c.entities.create(GoalBucket, { center: { x:300, y:490 } })
+
   // all entities on the board can be accessed by calling:
     // this.c.entities.all()
   // or grab just one type:
