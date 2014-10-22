@@ -5,12 +5,22 @@ var GoalBucket = function(game, settings, position) {
   }
   this.size = {x:75, y:20};
   this.color = "#097";
+  this.counter = 0;
 };
 
 
 GoalBucket.prototype = {
+
+  win: function(){
+    console.log('You won!');
+  },
+
   collision: function(other) {
     other.center.y = 900;
+    this.counter++;
+    if (this.counter >= 2){
+      this.win();
+    }
   },
 
   draw: function(ctx) {
