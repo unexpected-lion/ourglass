@@ -1,13 +1,27 @@
 body {
 	padding: 0px;
 	background-color: black;
-	font-family: 'Press Start 2P', cursive;
+	font-family: 'Press Start 2P', monospace;
 	color: white;
 }
-.container {
-	margin: 0 auto;
-	width: 920px;
-	text-align: center;
+
+#lean_overlay {
+  position: fixed;
+  z-index:100;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background: #000;
+  display: none;
+}
+ 
+#loginform label { 
+	display: block; 
+	font-size: 1em; 
+	font-weight: bold; 
+	color: white; 
+	margin-bottom: 3px; 
 }
 
 #simple-canvas {
@@ -17,14 +31,57 @@ body {
 	left: 248px;
 	top:80px;
 }
-.holder  {
-margin: 0 auto;
-position: relative;
 
+.container {
+	margin: 0 auto;
+	width: 920px;
+	text-align: center;
 }
+
+.holder  {
+	margin: 0 auto;
+	position: relative;
+}
+
 .shine {
 	position: absolute;
 	top: 80px;
 	left:240px;
 	z-index: 200;
+}
+
+.button { 
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  background-color: black;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 12px 26px 12px 26px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 3px;
+	font-family: 'Press Start 2P', monospace;
+}
+.button:hover {
+  background-color: #097;
+}
+
+.txtfield { 
+  display: block;
+  width: 100%;
+  padding: 6px 5px;
+  margin-bottom: 15px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.1em;
+  background-color: #fff;
+  border: 1px solid black;
+  border-color: #abbce8 #c3cae0 #b9c8ef;
+  border-radius: 4px;
+  transition: all 0.25s linear;
+}
+ 
+.txtfield:focus {
+  outline: none;
+  border-color: black;
 }
