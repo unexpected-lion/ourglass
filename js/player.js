@@ -14,7 +14,7 @@ Player.prototype = {
 
   collision: function(other) {
     
-    if (this.particles.indexOf(other) !== -1) {
+    if (this.c.entities.all(Particle).indexOf(other) !== -1) {
       // LEFT slope
         // -90 to 0
         // -180 to -270
