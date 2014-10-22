@@ -6,14 +6,13 @@ var OtherPlayer = function(game, settings) {
   this.size = {x:100,y:5};
   this.color = "#107";
   this.angle = 0;
-  this.particles = this.c.entities.all(Particle);
 };
 
 
 OtherPlayer.prototype = {
   collision: function(other) {
   
-    if (this.particles.indexOf(other) !== -1) {  
+    if (this.c.entities.all(Particle).indexOf(other) !== -1) {  
       // LEFT slope
         // -90 to 0
         // -180 to -270
