@@ -30,7 +30,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha-phantomjs test/SpecRunner.html"
   },
   "repository": {
     "type": "git",
