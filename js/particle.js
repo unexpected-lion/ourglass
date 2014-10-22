@@ -19,6 +19,10 @@ Particle.prototype = {
   },
 
   update: function(timeSinceLastTick){
+    if (this.center.y === 0) { this.center.y++; }
+    else {
+      this.center.y += this.center.y * .01;
+    }
     this.center.y++;
   },
 
