@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>
-    
-  </title>
-  <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="./styles/styles.css">
-</head>
-<body>
-<div class="container">
-  <h1>OURGLASS</h1>
-    <div class="holder"> 
 
-      <object type="image/svg+xml" data="retrocomputer.svg">Your browser does not support SVG</object>
-      <object type="image/svg+xml" class="shine" data="shine.svg">Your browser does not support SVG</object>
+  <head>
+    <title>ourglass</title>
 
-      <canvas id="simple-canvas"></canvas>
-      <script src="bower_components/firebase/firebase.js"></script>
-      <script src="bower_components/coquette/coquette-min.js"></script>
-      <script src="js/particle.js"></script>
-      <script src="js/otherplayer.js"></script>
-      <script src="js/player.js"></script>
-      <script src="js/goalbucket.js"></script>
-      <script src="js/room.js"></script>
-      <script src="js/main.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Flat UI -->
+    <link href="dist/css/flat-ui.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico">
+  </head>
 
+  <body>
+
+    <div class="login">
+      <h1>Join Game</h1>
+      <ul>
+        <li><input type="text" name="name" placeholder="Name"></input></li>
+        <li><input type="text" name="roomnumber" placeholder="Room Number"></input></li>
+        <li><button id="join" class="bigbutton">Join Game</button></li>
+      </ul>
     </div>
-</div>
-</body>
+
+    <div class="container">
+      <h1>OURGLASS</h1>
+        <div class="holder"> 
+
+          <object type="image/svg+xml" data="retrocomputer.svg">Your browser does not support SVG</object>
+          <object type="image/svg+xml" class="shine" data="shine.svg">Your browser does not support SVG</object>
+
+          <canvas id="simple-canvas"></canvas>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/coquette/coquette-min.js"></script>
+    <script src="js/particle.js"></script>
+    <script src="js/otherplayer.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/goalbucket.js"></script>
+    <script src="js/room.js"></script>
+    <script src="js/main.js"></script>
+    
+  </body>
+
 </html>

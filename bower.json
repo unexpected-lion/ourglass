@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "coquette": "*",
-    "firebase": "~1.1.2"
+    "firebase": "~1.1.2",
+    "flat-ui": "~2.2.1"
   }
 }
