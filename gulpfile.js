@@ -7,6 +7,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var mocha = require('gulp-mocha');
 
 // linter
 gulp.task('lint', function() {
@@ -14,11 +15,18 @@ gulp.task('lint', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
+
 // compile sass
 gulp.task('sass', function() {
     return gulp.src('scss/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('css'));
+});
+
+// run tests
+gulp.task('mocha', function(){
+    return gulp.src('test.js', {read: false})
+        .pipe(mocha({reporter: 'spec'}));
 });
 
 // concatenate & minify JS
@@ -33,9 +41,11 @@ gulp.task('scripts', function() {
 
 // watch for changes
 gulp.task('watch', function() {
+    // gulp.watch('js/*.js', ['lint', 'mocha', 'scripts']);
     gulp.watch('js/*.js', ['lint', 'scripts']);
     gulp.watch('scss/*.scss', ['sass']);
 });
 
 // default task
+// gulp.task('default', ['lint', 'sass', 'mocha', 'scripts', 'watch']);
 gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
