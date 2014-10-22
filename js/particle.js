@@ -11,14 +11,14 @@ var Particle = function(game, settings, position) {
 Particle.prototype = {
 
   update: function(timeSinceLastTick){
-    // if (this.center.y === 0) { this.center.y++; }
-    // else {
-    //   this.center.y += this.center.y * .01;
-    // }
-    // this.center.y++;
-
+    
     // update position
     if (this.getMaxY() < this.c.renderer._viewSize.y - this.size.y){ 
+      if (this.center.y === 0) { 
+        this.center.y++; 
+      } else {
+        this.center.y += this.center.y * .01;
+      }
       this.center.y++;
     } else {
       // if particles reach the bottom, send them back up to the top
