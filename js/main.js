@@ -22,7 +22,7 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
 
 // on page load, render a new game
 window.addEventListener('load', function() {
-  var playerName = 'bob';
+  var playerName = 'carl';
   var roomName = 'test';
   new SimpleGame(true, playerName, roomName);
 });
