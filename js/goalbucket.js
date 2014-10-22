@@ -20,9 +20,9 @@ GoalBucket.prototype = {
 
   collision: function(other) {
     if (this.particles.indexOf(other) === -1) {
-        other.center.y -= 30;      
+        other.center.y -= 30;
     } else {
-      other.center.y = 900;
+      this.c.entities.destroy(other);
       this.counter++;
       if (this.counter >= 2 && this.won === false){
         this.win();
