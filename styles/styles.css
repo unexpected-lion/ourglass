@@ -1,0 +1,30 @@
+body {
+	padding: 0px;
+	background-color: black;
+	font-family: 'Press Start 2P', cursive;
+	color: white;
+}
+.container {
+	margin: 0 auto;
+	width: 920px;
+	text-align: center;
+}
+
+#simple-canvas {
+	z-index: 100;
+	position: absolute;
+	height:270px;
+	left: 248px;
+	top:80px;
+}
+.holder  {
+margin: 0 auto;
+position: relative;
+
+}
+.shine {
+	position: absolute;
+	top: 80px;
+	left:240px;
+	z-index: 200;
+}
