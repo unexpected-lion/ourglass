@@ -22,7 +22,8 @@ Particle.prototype = {
       this.center.y++;
     } else {
       // if particles reach the bottom, send them back up to the top
-      this.center.y = 0;
+      this.center.y = this.c.entities.all(Spout)[0].center.y;
+      this.center.x = this.c.entities.all(Spout)[0].center.x;
     }
   },
 
