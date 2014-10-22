@@ -38,11 +38,11 @@ Player.prototype = {
 
       other.center.y += 2;
       other.center.x = this.getMinX();
-
+      
     // paddle slope right
     } else if (angleBwn(-180,-90) || angleBwn(-360,-270) ||
       angleBwn(0,90) || angleBwn(180,270)) {
-      
+
       other.center.y += 2;
       other.center.x = this.getMaxX();
 
