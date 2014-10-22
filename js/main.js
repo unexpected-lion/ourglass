@@ -22,5 +22,13 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
 window.addEventListener('load', function() {
   var playerName = 'bob';
   var roomName = 'test';
-  new SimpleGame(true, playerName, roomName);
+
+  $(function(){
+    $('#loginform').submit(function(e){
+      new SimpleGame(true, playerName, roomName);
+      return false;
+    });
+    
+    $('#modaltrigger').leanModal({ top: 200, overlay: 0.45, closeButton: ".hidemodal" });
+  });
 });

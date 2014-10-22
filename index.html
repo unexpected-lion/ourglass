@@ -6,27 +6,25 @@
 
     <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="./styles/styles.css">
-    <!-- Bootstrap -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Flat UI -->
-    <link href="dist/css/flat-ui.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.ico">
   </head>
 
   <body>
-
-    <div class="login">
-      <h1>Join Game</h1>
-      <ul>
-        <li><input type="text" name="name" placeholder="Name"></input></li>
-        <li><input type="text" name="roomnumber" placeholder="Room Number"></input></li>
-        <li><button id="join" class="bigbutton">Join Game</button></li>
-      </ul>
-    </div>
+    <center><a href="#loginmodal" class="button" id="modaltrigger">Login</a></center>
 
     <div class="container">
       <h1>OURGLASS</h1>
         <div class="holder">
+          <div id="loginmodal" style="display:none;">
+            <h1>Join Game</h1>
+            <form id="loginform" name="loginform" method="post" action="index.html">
+              <label for="username">name</label>
+              <input type="text" name="username" id="username" class="txtfield" tabindex="1">
+               
+              <label for="password">room number</label>
+              <input type="password" name="password" id="password" class="txtfield" tabindex="2">
+             <div class="center"><input type="submit" name="loginbtn" id="loginbtn" class="button hidemodal" value="Log In" tabindex="3"></div>    
+            </form>
+          </div>
 
           <object type="image/svg+xml" data="retrocomputer.svg">Your browser does not support SVG</object>
           <object type="image/svg+xml" class="shine" data="shine.svg">Your browser does not support SVG</object>
@@ -35,10 +33,11 @@
         </div>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/jquery-leanmodal/jquery.leanModal.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/coquette/coquette-min.js"></script>
     <script src="js/particle.js"></script>
