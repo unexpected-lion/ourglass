@@ -23,6 +23,7 @@
     "tests"
   ],
   "dependencies": {
-    "coquette": "*"
+    "coquette": "*",
+    "firebase": "~1.1.2"
   }
 }
