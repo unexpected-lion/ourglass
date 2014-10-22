@@ -5,7 +5,9 @@ var SimpleGame = function(autoFocus) {
 
   // render new particles at the top of the gamespace ({x:0,y:0} is top left)
   this.c.entities.create(Particle, { center: { x:250, y:0 }});
+  this.c.entities.create(Particle, { center: { x:265, y:0 }});
   this.c.entities.create(Particle, { center: { x:300, y:0 }});
+  this.c.entities.create(Particle, { center: { x:285, y:0 }});
 
   // render a new player that will respond to user's keyboard
   this.c.entities.create(Player, { center: { x:256, y:110 }});
