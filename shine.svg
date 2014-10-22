@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="450px" height="277px" viewBox="0 0 450 277" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1.1 (8761) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 192</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.136294158" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M225,0 C156.929085,3.07531778e-15 25.2495895,16.3523892 25.2495895,16.3523892 C20.8634008,16.8826438 16.6763362,20.8343982 15.909647,25.1976011 C15.909647,25.1976011 0,112.047513 0,155.8125 C3.07446376e-15,188.220668 15.4881784,251.910523 15.4881784,251.910523 C16.4930682,256.205629 20.8532506,260.119771 25.2418172,260.646058 C25.2418172,260.646058 157.02937,277 225,277 C290.872523,277 424.753478,260.633675 424.753478,260.633675 C429.137973,260.111117 433.521263,256.203827 434.519978,251.905548 C434.519978,251.905548 450,188.535133 450,155.8125 C450,112.361978 434.083055,25.1793161 434.083055,25.1793161 C433.314966,20.8345935 429.129957,16.8845482 424.748284,16.3663254 C424.748284,16.3663254 290.772237,0 225,0 Z" id="Rectangle-192" fill="url(#linearGradient-1)" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>
