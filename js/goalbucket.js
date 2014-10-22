@@ -7,6 +7,8 @@ var GoalBucket = function(game, settings, position) {
   this.color = "#097";
   this.counter = 0;
   this.won = false;
+
+  this.particles = this.c.entities.all(Particle);
 };
 
 
@@ -17,11 +19,15 @@ GoalBucket.prototype = {
   },
 
   collision: function(other) {
-    other.center.y = 900;
-    this.counter++;
-    if (this.counter >= 2 && this.won === false){
-      this.win();
-      this.won = true;
+    if (this.particles.indexOf(other) === -1) {
+        other.center.y -= 30;      
+    } else {
+      other.center.y = 900;
+      this.counter++;
+      if (this.counter >= 2 && this.won === false){
+        this.win();
+        this.won = true;
+      }
     }
   },
 
