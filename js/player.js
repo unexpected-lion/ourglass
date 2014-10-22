@@ -10,7 +10,6 @@ var Player = function(game, settings) {
 
 
 Player.prototype = {
-
   draw: function(ctx) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.center.x - this.size.x / 2,
@@ -27,8 +26,8 @@ Player.prototype = {
       }
     }
     if (this.c.inputter.isDown(this.c.inputter.DOWN_ARROW)) {
-      if (this.getMaxY() < this.c.renderer._viewSize.y - this.size.y){ 
-        this.center.y += 4;  
+      if (this.getMaxY() < this.c.renderer._viewSize.y - this.size.y){
+        this.center.y += 4;
       }
     }
 
@@ -50,30 +49,45 @@ Player.prototype = {
     if (this.c.inputter.isDown(this.c.inputter.Z)) {
       this.angle -= 4;
     }
+
+    // sync with firebase
+    this.sync();
   },
 
   getMinX: function() {
-    return this.center.x + 
+    return this.center.x +
       Math.min((this.size.x / 2) * (Math.cos(this.angle * (Math.PI / 180))),
       -1 * (this.size.x / 2) * (Math.cos(this.angle * (Math.PI / 180))));
   },
 
   getMaxX: function() {
-    return this.center.x + 
+    return this.center.x +
       Math.max((this.size.x / 2) * (Math.cos(this.angle * (Math.PI / 180))),
       -1 * (this.size.x / 2) * (Math.cos(this.angle * (Math.PI / 180))));
   },
 
   getMinY: function() {
-    return this.center.y + 
+    return this.center.y +
       Math.min((this.size.x / 2) * (Math.sin(this.angle * (Math.PI / 180))),
       -1 * (this.size.x / 2) * (Math.sin(this.angle * (Math.PI / 180))));
   },
 
   getMaxY: function() {
-    return this.center.y + 
+    return this.center.y +
       Math.max((this.size.x / 2) * (Math.sin(this.angle * (Math.PI / 180))),
       -1 * (this.size.x / 2) * (Math.sin(this.angle * (Math.PI / 180))));
   }
 
 };
+
+// sync minimum info with firebase
+// should be called on each update()
+Player.prototype.sync = function() {
+  this.url.update({center: this.center, angle: this.angle});
+}
+
+// sync all player info with firebase
+// should be called when player first created
+Player.prototype.syncAll = function() {
+  this.url.update({center: this.center, angle: this.angle, color: this.color, size: this.size});
+}
