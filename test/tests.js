@@ -93,7 +93,7 @@ describe('spout', function(){
   })
 });
 
-describe('funnel', function(){
+describe('goalbucket', function(){
   it('should catch particles', function(){
     // something impressive
   })
