@@ -6,9 +6,7 @@ var Player = function(game, settings) {
   this.size = {x:100,y:5};
   this.color = "#f07";
   this.angle = 0;
-  this.particles = this.c.entities.all(Particle);
 };
-
 
 Player.prototype = {
 
