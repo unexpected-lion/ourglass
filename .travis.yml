@@ -3,7 +3,7 @@ node_js:
   - 0.10
 install:
   - sudo $(which npm) install -g mocha-phantomjs
-  - npm install
+  - sudo $(which npm) install
   - sudo $(which npm) install -g bower
   - bower install
 after_success:
