@@ -9,21 +9,21 @@ var Particle = function(game, settings, position) {
 
 
 Particle.prototype = {
-  collision: function() {
-    this.center.y -= 20;
-    if (this.angle === 30){
-      this.angle = 0;
-    } else {
-      this.angle = 30;
-    }
-  },
 
   update: function(timeSinceLastTick){
-    if (this.center.y === 0) { this.center.y++; }
-    else {
-      this.center.y += this.center.y * .01;
+    // if (this.center.y === 0) { this.center.y++; }
+    // else {
+    //   this.center.y += this.center.y * .01;
+    // }
+    // this.center.y++;
+
+    // update position
+    if (this.getMaxY() < this.c.renderer._viewSize.y - this.size.y){ 
+      this.center.y++;
+    } else {
+      // if particles reach the bottom, send them back up to the top
+      this.center.y = 0;
     }
-    this.center.y++;
   },
 
   draw: function(ctx) {
@@ -33,6 +33,10 @@ Particle.prototype = {
       this.size.x,
       this.size.y
     );
+  },
+
+  getMaxY: function() {
+    return this.center.y - 1;
   }
 
 };
