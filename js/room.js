@@ -7,15 +7,21 @@ var Room = function(roomName, playerName, c) {
   // connect to firebase
   this._fb_room = new Firebase("https://ourglass.firebaseio.com/rooms").child(roomName);
   this._fb_players = this._fb_room.child('players');
-  this._fb_balls = this._fb_room.child('balls');
-
+  this._fb_particles = this._fb_room.child('particles');
+  this._fb_spout = this._fb_room.child('spout');
+  this._fb_goal = this._fb_room.child('goal');
+  
+ 
   this.c = c;
   this.playerName = playerName;
   this.player = null;
   this.players = {};
-  this.balls = null;
   this.displayNames = {};
-
+  
+  this.particles = {};
+  this.spout = null;
+  this.goal = null;
+  
 
   //check/create player
   this._fb_players.once('value', function(data) {
@@ -28,12 +34,36 @@ var Room = function(roomName, playerName, c) {
       var center = data.val()[playerName].center;
       this.player = c.entities.create(Player, {center: center, name: playerName, url: url});
     }
-
-    console.log(this.player);
-    // testing hack - should sync positions from Player class
-    // setInterval(function() {
-    // }.bind(this), 10);
   }, this)
+  
+  //check/create spout
+  this._fb_spout.once('value', function(data) {
+    // firebase url for this spout
+    var url = this._fb_spout.child(1);
+    if (!data.val()) {
+      var center = { x:Math.random() * 500, y:10 };
+      this.spout = this.c.entities.create(Spout, { center: center });
+      url.update({center: center});
+    } else {
+      var center = data.val()[1].center;
+      this.spout = this.c.entities.create(Spout, { center: center });
+    }
+  }, this)
+  
+  //check/create goal
+  this._fb_goal.once('value', function(data) {
+    // firebase url for this goal
+    var url = this._fb_goal.child(1);
+    if (!data.val()) {
+      var center = { x:Math.random() * 500, y:490 };
+      this.goal = this.c.entities.create(GoalBucket, { center: center });
+      url.update({center: center});
+    } else {
+      var center = data.val()[1].center;
+      this.goal = this.c.entities.create(GoalBucket, { center: center });
+    }
+  }, this)
+  
 
   // check/add other players
   this._fb_players.on('child_added', function(data) {
@@ -66,8 +96,13 @@ var Room = function(roomName, playerName, c) {
     }
   }, this);
 
-  this._fb_balls.on('value', function(data) {
-    this.balls = data.val();
+  this._fb_particles.on('child_added', function(data) {
+    var center = data.val().center;
+    // check if particle already present
+    if (this.players[data.name()] === undefined) {
+      // create particles
+       this.players[data.name()] = c.entities.create(Particle, {center: center})
+    }
   }, this);
 
 }

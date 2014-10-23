@@ -5,10 +5,6 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
 
   // render new particles at the top of the gamespace ({x:0,y:0} is top left)
 
-  this.c.entities.create(GoalBucket, { center: { x:Math.random() * 500, y:490 } });
-
-  this.c.entities.create(Spout, { center: { x:Math.random() * 500, y:10 } });
-
   // all entities on the board can be accessed by calling:
     // this.c.entities.all()
   // or grab just one type:
