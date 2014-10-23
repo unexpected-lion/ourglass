@@ -27,7 +27,7 @@ var onGameOver = function(){
   $('#simple-canvas').hide();
   var victory = $('<div>').addClass('victory');
   victory.attr('id','simple-canvas');
-  victory.append('<div class="left-victory"><img class="victory-img" src="giphy.gif"/><div>');
+  victory.append('<div class="left-victory"><img class="victory-img" src="assets/giphy.gif"/><div>');
   victory.append('<div class="right-victory"><div class="right-victory-text">Celebrate!</div></div>');
   $('.holder').append(victory);
 };
