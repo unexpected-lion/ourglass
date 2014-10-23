@@ -4,7 +4,7 @@ var Player = function(game, settings) {
     this[i] = settings[i];
   }
   this.size = {x:100,y:5};
-  this.color = "#f07";
+  this.color = "#FF4500";
   this.angle = 0;
 };
 
