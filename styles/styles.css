@@ -5,6 +5,10 @@ body {
 	color: white;
 }
 
+object {
+	pointer-events:none
+}
+
 #lean_overlay {
   position: fixed;
   z-index:100;
@@ -15,13 +19,13 @@ body {
   background: #000;
   display: none;
 }
- 
-#loginform label { 
-	display: block; 
-	font-size: 1em; 
-	font-weight: bold; 
-	color: white; 
-	margin-bottom: 3px; 
+
+#loginform label {
+	display: block;
+	font-size: 1em;
+	font-weight: bold;
+	color: white;
+	margin-bottom: 3px;
 }
 
 #simple-canvas {
@@ -50,7 +54,7 @@ body {
 	z-index: 200;
 }
 
-.button { 
+.button {
   display: inline-block;
   color: white;
   text-decoration: none;
@@ -67,7 +71,7 @@ body {
   background-color: #097;
 }
 
-.txtfield { 
+.txtfield {
   display: block;
   width: 100%;
   padding: 6px 5px;
@@ -80,7 +84,7 @@ body {
   border-radius: 4px;
   transition: all 0.25s linear;
 }
- 
+
 .txtfield:focus {
   outline: none;
   border-color: black;
