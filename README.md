@@ -6,7 +6,7 @@ Ourglass is a fun team-building game where users work together to prevent sand f
 
   - __Product Owner__: Spencer Handley [github](https://github.com/spencer48)
   - __Scrum Master__: John Heroy [github](https://github.com/johnheroy)
-  - __Development Team Members__: Nick Stefan [github](https://github.com/nickstefan12), Katherine Gilhooley [github](https://github.com/bisutun), Aric Huang [github](https://github.com/concreted)
+  - __Development Team Members__: Nick Stefan [github](https://github.com/nickstefan), Katherine Gilhooley [github](https://github.com/bisutun), Aric Huang [github](https://github.com/concreted)
 
 ## Table of Contents
 
