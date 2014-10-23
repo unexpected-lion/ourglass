@@ -1,7 +1,10 @@
 body {
 	padding: 0px;
-	background-color: black;
-	font-family: 'Press Start 2P', monospace;
+  background: -webkit-radial-gradient(green 0%, black 80%); /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient(green 0%, black 80%); /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(green 0%, black 80%); /* For Firefox 3.6 to 15 */
+  background: radial-gradient(green 0%, black 80%); /* Standard syntax */
+  font-family: 'Press Start 2P', monospace;
 	color: white;
 }
 
@@ -71,6 +74,28 @@ object {
   background-color: #097;
 }
 
+.table {
+  position: absolute;
+  width:1300px;
+  top: 150px;
+  left:-200px;
+  z-index: -1;
+}
+.bottle {
+  position: absolute;
+  top: 270px;
+  left:800px;
+  z-index: 180;
+}
+.lava {
+  position: absolute;
+  top: 180px;
+  left:-35px;
+  z-index: 180;
+}
+.computer {
+  z-index: 200;
+}
 .txtfield {
   display: block;
   width: 100%;
