@@ -23,12 +23,13 @@ GoalBucket.prototype = {
     } else {
       this.c.entities.destroy(other);
       this.score++;
+      this.c.entities.all(GameScore)[0].score++;
       this.checkScore();
     }
   },
 
   checkScore: function(){
-    if (this.score > 50 && !this.won){
+    if (this.score > 49 && !this.won){
       this.won = true;
       this.win();
     }

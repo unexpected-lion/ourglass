@@ -5,7 +5,6 @@ var DisplayName = function(game, settings) {
   }
   this.color = this.c.room.players[ this.displayName ].color;
   this.angle = 0;
-  console.log(this);
 };
 
 
