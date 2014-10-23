@@ -9,12 +9,15 @@ var Spout = function(game, settings, position) {
   this.won = false;
 
   // emit a particle on a timer
-  setInterval(function() {this.emit()}.bind(this), 500);
+  this.endCode = setInterval(function() {this.emit()}.bind(this), 500);
 };
 
 
 Spout.prototype = {
   collision: function(other) {
+    if (this.c.entities.all(Particle).indexOf(other) === -1) {
+        other.center.y += 20;
+    }
   },
 
   draw: function(ctx) {

@@ -5,9 +5,9 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
 
   // render new particles at the top of the gamespace ({x:0,y:0} is top left)
 
-  this.c.entities.create(GoalBucket, { center: { x:300, y:490 } })
+  this.c.entities.create(GoalBucket, { center: { x:Math.random() * 500, y:490 } });
 
-  /this.c.entities.create(Spout, { center: { x:100, y:10 } })
+  this.c.entities.create(Spout, { center: { x:Math.random() * 500, y:10 } });
 
   // all entities on the board can be accessed by calling:
     // this.c.entities.all()
@@ -18,16 +18,34 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
   var room = new Room(roomName, playerName, this.c);
 };
 
+var onGameOver = function(){
+  // reset the login and room name capabilities
+  $('#loginform').children('input[name=password]').val('');
+  $('#modaltrigger').text('Login');
+
+  // hide the canvas and show the victory
+  $('#simple-canvas').hide();
+  var victory = $('<div>').addClass('victory');
+  victory.attr('id','simple-canvas');
+  victory.append('<div class="left-victory"><img class="victory-img" src="giphy.gif"/><div>');
+  victory.append('<div class="right-victory"><div class="right-victory-text">Celebrate!</div></div>');
+  $('.holder').append(victory);
+};
+
 // on page load, render a new game
 window.addEventListener('load', function() {
-  $(function(){
-    $('#loginform').submit(function(e){
-      var playerName = $('#loginform').children('input[name=username]').val()
-      var roomName = $('#loginform').children('input[name=password]').val()
-      new SimpleGame(true, playerName, roomName);
-      return false;
-    });
-
-    $('#modaltrigger').leanModal({ top: 200, overlay: 0.45, closeButton: ".hidemodal" });
+  // on submit of the login modal 'window'
+  $('#loginform').submit(function(e){
+    var playerName = $('#loginform').children('input[name=username]').val();
+    var roomName = $('#loginform').children('input[name=password]').val();
+    // replace login button with roomName
+    $('#modaltrigger').text(roomName);
+    new SimpleGame(true, playerName, roomName);
+    // remove any victory divs and show the canvas
+    $('.victory').remove();
+    $('#simple-canvas').show();
+    return false;
   });
+
+  $('#modaltrigger').leanModal({ top: 200, overlay: 0.45, closeButton: ".hidemodal" });
 });
