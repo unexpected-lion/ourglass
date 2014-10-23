@@ -3,8 +3,8 @@ var GoalBucket = function(game, settings, position) {
   for (var i in settings) {
     this[i] = settings[i];
   }
-  this.size = {x:75, y:20};
-  this.color = "#097";
+  this.size = {x:70, y:15};
+  this.color = "#8B4513";
   this.score = 0;
   this.won = false;
 };
@@ -28,7 +28,7 @@ GoalBucket.prototype = {
   },
 
   checkScore: function(){
-    if (this.score > 10 && !this.won){
+    if (this.score > 50 && !this.won){
       this.won = true;
       this.win();
     }

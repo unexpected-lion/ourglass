@@ -61,7 +61,6 @@ object {
   display: inline-block;
   color: white;
   text-decoration: none;
-  background-color: black;
   font-size: 1em;
   font-weight: bold;
   padding: 12px 26px 12px 26px;
@@ -71,7 +70,7 @@ object {
 	font-family: 'Press Start 2P', monospace;
 }
 .button:hover {
-  background-color: #097;
+  background-color: #FF4500;
 }
 
 .table {
