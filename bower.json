@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "homepage": "https://github.com/unexpected-lion/ourglass",
   "authors": [
-    "John Heroy <johnheroy@gmail.com>"
+    "John Heroy <johnheroy@gmail.com>",
+    "Spencer Handley <spencerhandley@gmail.com>",
+    "Katherine Gilhooley <k.gilhooley@gmail.com>",
+    "Aric Huang <arichuang@gmail.com>",
+    "Nick Stefan <nickstefan12@gmail.com>"
   ],
   "description": "Collaborative real-time physics game",
   "main": "index.html",
