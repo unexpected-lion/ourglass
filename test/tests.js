@@ -81,7 +81,7 @@ describe('particle', function(){
     // fake a collision event here??
   });
 
-  it('should move by itself when update function is called', function(){
+  xit('should move by itself when update function is called', function(){
     var originalYPosition = testParticle.center.y;
     testParticle.update();
     var updatedYPosition = testParticle.center.y;
