@@ -3,8 +3,8 @@ var Particle = function(game, settings, position) {
   for (var i in settings) {
     this[i] = settings[i];
   }
-  this.size = {x:10, y:10};
-  this.color = "#099";
+  this.size = {x:3, y:3};
+  this.color = "#FAEBD7";
 };
 
 

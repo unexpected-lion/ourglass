@@ -3,10 +3,11 @@ var Spout = function(game, settings, position) {
   for (var i in settings) {
     this[i] = settings[i];
   }
-  this.size = {x:30, y:30};
-  this.color = "#097";
+  this.size = {x:15, y:70};
+  this.color = "#696969";
   this.counter = 0;
   this.won = false;
+  this.zindex = 1;
 
   // emit a particle on a timer
   this.endCode = setInterval(function() {this.emit()}.bind(this), 500);
