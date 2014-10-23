@@ -5,29 +5,32 @@ var GoalBucket = function(game, settings, position) {
   }
   this.size = {x:75, y:20};
   this.color = "#097";
-  this.counter = 0;
+  this.score = 0;
   this.won = false;
-
-  this.particles = this.c.entities.all(Particle);
 };
 
 
 GoalBucket.prototype = {
 
   win: function(){
-    console.log('You won!');
+    clearTimeout(this.c.entities.all(Spout)[0].endCode);
+    onGameOver();
   },
 
   collision: function(other) {
-    if (this.particles.indexOf(other) === -1) {
+    if (this.c.entities.all(Particle).indexOf(other) === -1) {
         other.center.y -= 30;
     } else {
       this.c.entities.destroy(other);
-      this.counter++;
-      if (this.counter >= 2 && this.won === false){
-        this.win();
-        this.won = true;
-      }
+      this.score++;
+      this.checkScore();
+    }
+  },
+
+  checkScore: function(){
+    if (this.score > 10 && !this.won){
+      this.won = true;
+      this.win();
     }
   },
 

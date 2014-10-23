@@ -89,3 +89,22 @@ object {
   outline: none;
   border-color: black;
 }
+
+.left-victory {
+  float: left;
+}
+
+.victory-img {
+  margin: 50px 0 0 20px;
+  height: 200px;
+}
+
+.right-victory {
+  float: right;
+}
+
+.right-victory-text {
+  position: absolute;
+  top: 50%;
+  margin-left: 20px;
+}
