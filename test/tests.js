@@ -77,16 +77,31 @@ describe('particle', function(){
     expect(testParticle.size.y).to.be.above(0);
   });
 
-  it('should respond to a collision event', function(){
-    // fake a collision event here??
-  });
-
   it('should move by itself when update function is called', function(){
     var originalYPosition = testParticle.center.y;
     testParticle.update();
     var updatedYPosition = testParticle.center.y;
     expect(updatedYPosition).to.be.above(originalYPosition);
   });
+
+  it('should accelerate, i.e. is subject to the forces of gravity', function(){
+    var originalYPosition = testParticle.center.y;
+    testParticle.update();
+    var updatedYPosition = testParticle.center.y;
+    var initialChangeY = updatedYPosition - originalYPosition;
+
+    for (var i = 0; i < 100; i++){
+      testParticle.update();
+    }
+
+    originalYPosition = testParticle.center.y;
+    testParticle.update();
+    updatedYPosition = testParticle.center.y;
+    var postChangeY = updatedYPosition - originalYPosition;
+
+    expect(postChangeY).to.be.above(initialChangeY);
+  });
+
 });
 
 describe('spout', function(){
