@@ -28,7 +28,7 @@ GoalBucket.prototype = {
   },
 
   checkScore: function(){
-    if (this.score > 10 && !this.won){
+    if (this.score > 100 && !this.won){
       this.won = true;
       this.win();
     }

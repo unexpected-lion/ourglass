@@ -6,6 +6,7 @@ var Spout = function(game, settings, position) {
   this.size = {x:15, y:70};
   this.color = "#696969";
   this.counter = 0;
+  // without this, triggers win function more than once
   this.won = false;
   this.zindex = 1;
 
