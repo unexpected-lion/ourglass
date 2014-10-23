@@ -14,6 +14,7 @@ var Room = function(roomName, playerName, c) {
   this.player = null;
   this.players = {};
   this.balls = null;
+  this.displayNames = {};
 
 
   //check/create player
@@ -38,11 +39,16 @@ var Room = function(roomName, playerName, c) {
   this._fb_players.on('child_added', function(data) {
     console.log(data.name(), data.val());
     var center = data.val().center;
+    var displayName = data.name();
     // check if player already added
     if (this.players[data.name()] === undefined) {
       // create players in coquette
       if (data.name() !== playerName) {
-        this.players[data.name()] = c.entities.create(OtherPlayer, {center: center})
+        this.players[data.name()] = c.entities.create(OtherPlayer, { center: center });
+        this.displayNames[data.name()] = c.entities.create(DisplayName, {
+          center: center,
+          displayName: data.name()
+        });
       }
     }
   }, this);
@@ -56,6 +62,7 @@ var Room = function(roomName, playerName, c) {
       var angle = data.val().angle;
       this.players[name].center = center;
       this.players[name].angle = angle;
+      this.displayNames[name].center = center;
     }
   }, this);
 

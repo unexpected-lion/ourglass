@@ -15,7 +15,7 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
     // this.c.entities.all(Particle)
 
   // room object handles creating/updating players
-  var room = new Room(roomName, playerName, this.c);
+  this.c.room = new Room(roomName, playerName, this.c);
 };
 
 var onGameOver = function(){
