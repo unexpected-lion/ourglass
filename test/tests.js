@@ -63,7 +63,7 @@ describe('particle', function(){
   // var testParticle = testGame.c.entities.create(Particle, {x:5,y:5});
   
   // working but not actually informative
-  var testGame = {c: {collider: true, entities: [0,1,2]} };
+  var testGame = {c: {collider: true, entities: [0,1,2], renderer: {_viewSize: {x: 800, y: 500}}} };
   var testParticle = new Particle(testGame, {x:5,y:5}); 
   testParticle.center = {x:250, y:0};
 
@@ -81,7 +81,7 @@ describe('particle', function(){
     // fake a collision event here??
   });
 
-  xit('should move by itself when update function is called', function(){
+  it('should move by itself when update function is called', function(){
     var originalYPosition = testParticle.center.y;
     testParticle.update();
     var updatedYPosition = testParticle.center.y;
