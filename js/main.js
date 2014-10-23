@@ -7,7 +7,7 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
 
   this.c.entities.create(GoalBucket, { center: { x:300, y:490 } })
 
-  this.c.entities.create(Spout, { center: { x:100, y:10 } })
+  /this.c.entities.create(Spout, { center: { x:100, y:10 } })
 
   // all entities on the board can be accessed by calling:
     // this.c.entities.all()
@@ -20,15 +20,14 @@ var SimpleGame = function(autoFocus, playerName, roomName) {
 
 // on page load, render a new game
 window.addEventListener('load', function() {
-  var playerName = 'bob';
-  var roomName = 'test';
-
   $(function(){
     $('#loginform').submit(function(e){
+      var playerName = $('#loginform').children('input[name=username]').val()
+      var roomName = $('#loginform').children('input[name=password]').val()
       new SimpleGame(true, playerName, roomName);
       return false;
     });
-    
+
     $('#modaltrigger').leanModal({ top: 200, overlay: 0.45, closeButton: ".hidemodal" });
   });
 });
