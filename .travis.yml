@@ -6,6 +6,8 @@ install:
   - sudo $(which npm) install
   - sudo $(which npm) install -g bower
   - bower install
+  - sudo $(which npm) install -g gulp
+  - gulp build
 after_success:
   - mkdir /home/travis/tmp
   - sudo $(which npm) install -g firebase-tools
