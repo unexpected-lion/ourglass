@@ -3,6 +3,7 @@ var otherColors = ['#B4EF52', '#7A13A8', '#BF64C2', '#6DE911', '#6A8FE7',
   '#7B5BB6', '#2CB0EC', '#E7996C', '#C52F74', '#60A5B4'];
 
 var OtherPlayer = function(game, settings) {
+  // this.center
   this.c = game.c;
   for (var i in settings) {
     this[i] = settings[i];
