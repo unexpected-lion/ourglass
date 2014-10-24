@@ -77,26 +77,97 @@ Invoked at end of the constructor function, `addScore` creates a new GameScore i
 Calls `clearTimeout` on the spout, destroys all entities attached to Coquette instance, and removes room from Firebase document.
 
 ### Player
-Defined as taking arguments: game(instance), settings(an object)
+Defined as taking arguments:
+`game` - game instance,
+`settings` - on object of settings properties to be extended onto the class instance
 
-However, with coquette, best instantiated from within the game class itself or another class:
+However, with coquette, player is best instantiated from within the game class itself or another class:
 `this.c.entities.create(Player,{optionsObj})`
+
+In ourglass, this class is instantiated inside the `Room` class.
 
 options:
   size = {x: _width_, y: _height_}
   color = _string_
   angle = _integer_
+  etc...
   
 options can also be hardcoded to the player class by defining `this.size` etc.
 
 #### Player#collision(other):
-function invoked upon collision, and passes the object being collided as `other`
+Function invoked upon collision, and passes the object being collided as `other`. Both `other` and `this` (this player) can be affected within this function. For example, on collision one could set `other.center.x += 2` to bounce the other object away from player
+
+#### Player#draw(ctx):
+Function invoked every frame (ie every second) with the canvas instance passed as `ctx`. This is where the class is actually rendered by using HTML5 canvas functions. For example: `ctx.fillStyle = this.color` would take the class instance's color and begin drawing this class with that color. `ctx.fillRect()` and other HTML5 canvas functions help draw the object.
+
+#### Player#update():
+Function invoked every frame, and handles the player's movement. Coquette exposes the keyboard inputs with a simple API such as `this.c.inputter.isDown(this.c.inputter.UP_ARROW)`. Pass that expression into an if statement and the update function could invoke a movement change such as `this.center.y -= 4`.
+
+#### Player#getMinX(), Player#getMaxX(), Player#getMinY(), Player#getMaxY():
+These are helper functions that use trigonomerty and the `this.angle` value to calculate, for example, the maximum Y value of a 100px stick when that stick is turned at an angle. This is useful because its not a simple calculation to figure out where in space the stick is when its at an angle.
+
+#### Player#sync():
+Automatically invoked inside the Player#update() and ensures the player's positino is synced up with firebase.
+
+#### Player#syncAll():
+Automatically invoked upon player creation (inside of Room class), and ensures firebase has all the info it needs to pass to the other players about this player's whereabouts on the canvas.
 
 ### DisplayName
+Defined as taking arguments:
+`game` - game instance,
+`settings` - on object of settings properties to be extended onto the class instance
+
+However, with coquette, DisplayName is best instantiated from within the game class itself or another class:
+`this.c.entities.create(DisplayName,{optionsObj})`
+
+In ourglass, this class is instantiated inside the `Room` class.
+
+options:
+  center = {x: _width_, y: _height_}
+  displayName = `string`
+
+Firebase instantiates this class right after `OtherPlayer`. It is basically a shadow of text that follows around `OtherPlayer`, in order to identify who else is playing with you.
+
+This class inherits its methods from `Player`.
+
+#### `DisplayName.prototype = Object.create( Player.prototype );`
+#### `DisplayName.prototype.constructor = Player;`
+
+#### DisplayName#update():
+This is a purposely empty function, in order to overwite the function inherited from `Player`. Firebase controlls the movement rather than this function.
+
+#### DisplayName#collision():
+This is a purposely empty function, in order to overwite the function inherited from `Player`. We don't want the text to have collision events.
+
+#### DisplayName#draw(ctx):
+This function renders this class instance as canvas text, using `this.displayName`, and 30px monospace.
 
 ### OtherPlayer
+Defined as taking arguments:
+`game` - game instance,
+`settings` - on object of settings properties to be extended onto the class instance
+
+However, with coquette, OtherPlayer is best instantiated from within the game class itself or another class:
+`this.c.entities.create(OtherPlayer,{optionsObj})`
+
+In ourglass, this class is instantiated inside the `Room` class.
+
+options:
+  center = {x: _width_, y: _height_}
+  displayName = `string`
+
+While on your own computer, you play as Player, on other people's computers, you are being rendered as OtherPlayer.
+
+This class inherits its methods from `Player`.
+
+#### `OtherPlayer.prototype = Object.create( Player.prototype );`
+#### `OtherPlayer.prototype.constructor = Player;`
+
+#### OtherPlayer#update():
+This is a purposely empty function, in order to overwite the function inherited from `Player`. Firebase controlls the movement rather than this function.
 
 ### Particle
+
 
 ### GameScore
 
