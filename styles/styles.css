@@ -23,6 +23,12 @@ object {
   display: none;
 }
 
+.controlsbox{
+  position: fixed;
+  right:25px;
+  top: 0px;
+}
+
 #loginform label {
 	display: block;
 	font-size: 1em;
