@@ -142,3 +142,16 @@ Room.prototype.addScore = function() {
     }
   }, this);
 }
+
+Room.prototype.deleteRoom = function() {
+  var spout = this.c.entities.all(Spout)[0];
+  if (spout) {
+    clearTimeout(spout.endCode);
+  }
+  
+  var all = this.c.entities.all();
+  for (var i = 0; i < all.length; i++) {
+    this.c.entities.destroy(all[i]);
+  } 
+  this._fb_room.remove();
+}
