@@ -86,13 +86,13 @@ However, with coquette, player is best instantiated from within the game class i
 
 In ourglass, this class is instantiated inside the `Room` class.
 
-options:
+settings:
   size = {x: _width_, y: _height_}
   color = _string_
   angle = _integer_
   etc...
   
-options can also be hardcoded to the player class by defining `this.size` etc.
+settings can also be hardcoded to the player class by defining `this.size` etc.
 
 #### Player#collision(other):
 Function invoked upon collision, and passes the object being collided as `other`. Both `other` and `this` (this player) can be affected within this function. For example, on collision one could set `other.center.x += 2` to bounce the other object away from player
@@ -122,7 +122,7 @@ However, with coquette, DisplayName is best instantiated from within the game cl
 
 In ourglass, this class is instantiated inside the `Room` class.
 
-options:
+settings:
   center = {x: _width_, y: _height_}
   displayName = `string`
 
@@ -140,7 +140,7 @@ This is a purposely empty function, in order to overwite the function inherited 
 This is a purposely empty function, in order to overwite the function inherited from `Player`. We don't want the text to have collision events.
 
 #### DisplayName#draw(ctx):
-This function renders this class instance as canvas text, using `this.displayName`, and 30px monospace.
+This function renders this class instance as canvas text, using `this.displayName`, and 30px monospace. It uses `ctx.fillText()` to actually render.
 
 ### OtherPlayer
 Defined as taking arguments:
@@ -152,9 +152,8 @@ However, with coquette, OtherPlayer is best instantiated from within the game cl
 
 In ourglass, this class is instantiated inside the `Room` class.
 
-options:
+settings:
   center = {x: _width_, y: _height_}
-  displayName = `string`
 
 While on your own computer, you play as Player, on other people's computers, you are being rendered as OtherPlayer.
 
@@ -170,11 +169,24 @@ This is a purposely empty function, in order to overwite the function inherited 
 
 
 ### GameScore
+Defined as taking arguments:
+`game` - game instance,
+`settings` - on object of settings properties to be extended onto the class instance
+
+However, with coquette, GameScore is best instantiated from within the game class itself or another class:
+`this.c.entities.create(GameScore,{optionsObj})`
+
+In ourglass, this class is instantiated inside the `SimpleGame` class and is passed in a settings object that sets it's location. This class's property of `this.score` is incremented from 0, in the GoalBucket#collision() function.
+
+settings:
+  center = {x: _width_, y: _height_}
+
+#### GameScore#draw(ctx):
+Function invoked every frame (ie every second) with the canvas instance passed as `ctx`. This is where the class is actually rendered by using HTML5 canvas functions. `ctx.fillText()` is used to render a score to the canvas.
 
 ### Spout
 
 ### GoalBucket
-
 
 ## Roadmap
 
