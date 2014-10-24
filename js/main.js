@@ -28,6 +28,19 @@ var onGameOver = function(){
   $('.holder').append(victory);
 };
 
+var onHostLeave = function(){
+  // reset the login and room name capabilities
+  $('#loginform').children('input[name=password]').val('');
+  $('#modaltrigger').text('Login');
+
+  // hide the canvas and show the victory
+  $('#simple-canvas').hide();
+  var victory = $('<div>').addClass('victory');
+  victory.attr('id','simple-canvas');
+  victory.append('<div class="right-victory"><div class="right-victory-text">Host left! Join a new game.</div></div>');
+  $('.holder').append(victory);
+};
+
 // on page load, render a new game
 window.addEventListener('load', function() {
   // on submit of the login modal 'window'

@@ -137,9 +137,16 @@ Room.prototype.addPlayers = function() {
   
   // remove players who leave
   this._fb_players.on('child_removed', function(data) {
-    this.c.entities.destroy(this.players[data.name()]);
-    this.c.entities.destroy(this.displayNames[data.name()]);
-    delete this.players[data.name()];
+    // if host leaves, end game - delete the room
+    if (data.val().host) {
+      this.deleteRoom();
+      onHostLeave();
+    }
+    else {
+      this.c.entities.destroy(this.players[data.name()]);
+      this.c.entities.destroy(this.displayNames[data.name()]);
+      delete this.players[data.name()];
+    }
   }, this);
   
 }
