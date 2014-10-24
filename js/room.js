@@ -27,7 +27,7 @@ var Room = function(roomName, playerName, c) {
   this._fb_players.once('value', function(data) {
     // firebase url for this player
     var url = this._fb_players.child(playerName);
-    //url.onDisconnect.remove();
+    url.onDisconnect().remove();
     
     // if you join the room first, you're the host
     var host = false;
