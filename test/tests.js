@@ -64,8 +64,10 @@ describe('particle', function(){
   
   // working but not actually informative
   var testGame = {c: {collider: true, entities: [0,1,2], renderer: {_viewSize: {x: 800, y: 500}}} };
+  var testURL = {update: function() {}};
   var testParticle = new Particle(testGame, {x:5,y:5}); 
   testParticle.center = {x:250, y:0};
+  testParticle.url = testURL;
 
   it('should initialize a particle when called', function(){
     expect(testParticle).to.exist;
