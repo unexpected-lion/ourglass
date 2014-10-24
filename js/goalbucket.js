@@ -21,6 +21,9 @@ GoalBucket.prototype = {
     if (this.c.entities.all(Particle).indexOf(other) === -1) {
         other.center.y -= 30;
     } else {
+      // delete from firebase
+      other.url.remove();
+      // remote from game
       this.c.entities.destroy(other);
       this.score++;
       this.c.entities.all(GameScore)[0].score++;

@@ -11,6 +11,12 @@ var DummyParticle = function(game, settings, position) {
       this.center = data.val().center;
     }
   }, this);
+  
+  this.url.parent().on('child_removed', function(data) {
+    if (data.name() === this.id) {
+      this.c.entities.destroy(this);
+    }
+  }, this);
 };
 
 

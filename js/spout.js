@@ -35,7 +35,7 @@ Spout.prototype = {
   emit: function() {
     var particles = this.c.entities.all(Particle);
     var particleUrl = this.particleUrl.child(this.counter);
-    if (particles.length < 5) {
+    if (particles.length < 2) {
       console.log(particles.length);
       //debugger;
       this.c.entities.create(Particle, { center: {x: this.center.x, y: this.center.y + this.size.y + 1}, url: particleUrl, id: this.counter});
