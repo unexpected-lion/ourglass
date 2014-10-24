@@ -10,6 +10,7 @@ var Room = function(roomName, playerName, c) {
   this._fb_particles = this._fb_room.child('particles');
   this._fb_spout = this._fb_room.child('spout');
   this._fb_goal = this._fb_room.child('goal');
+  this._fb_score = this._fb_room.child('score');
   
   this.c = c;
   this.playerName = playerName;
@@ -20,6 +21,7 @@ var Room = function(roomName, playerName, c) {
   this.particles = {};
   this.spout = null;
   this.goal = null;
+  this.gamescore = null;
 
   //check/create player
   this._fb_players.once('value', function(data) {
@@ -122,4 +124,25 @@ var Room = function(roomName, playerName, c) {
     }
   }, this);
   
+  this.addScore();
+  
+}
+
+Room.prototype.addScore = function() {
+  // check if score value exists on firebase
+  this._fb_score.once('value', function(data) { 
+    // create score object
+    this.gamescore = this.c.entities.create(GameScore, { center: {x:700, y:70}, url: this._fb_score});
+    // no score value: create on firebase
+    if (!data.val()) {
+      this._fb_score.update({score: this.gamescore.score});
+    }
+  }, this);
+    // score value exists: sync score
+  this._fb_score.on('value', function(data) {
+    if (this.gamescore) {
+      this.gamescore.score = data.val().score;
+      this.gamescore.checkScore();
+    }
+  }, this);
 }

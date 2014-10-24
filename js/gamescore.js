@@ -5,6 +5,8 @@ var GameScore = function(game, settings) {
   }
   this.color = "blue";
   this.score = 0;
+  
+  this.won = false;
 };
 
 GameScore.prototype.draw = function(ctx) {
@@ -18,3 +20,32 @@ GameScore.prototype.draw = function(ctx) {
   }
   ctx.fillText(this.score, this.center.x, this.center.y);
 };
+
+GameScore.prototype.sync = function() {
+  this.url.update({score: this.score});
+};
+
+GameScore.prototype.win = function(){
+  // check for spout
+  var spout = this.c.entities.all(Spout)[0];
+  if (spout) {
+    clearTimeout(spout.endCode);
+  }
+  onGameOver();
+};
+
+GameScore.prototype.checkScore = function(){
+  if (this.score > 49 && !this.won){
+    this.won = true;
+    this.win();
+  }
+};
+
+GameScore.prototype.incrementAndSync = function() {
+  this.score++;
+  this.sync();
+  this.checkScore();
+};
+
+
+
