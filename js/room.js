@@ -11,7 +11,6 @@ var Room = function(roomName, playerName, c) {
   this._fb_spout = this._fb_room.child('spout');
   this._fb_goal = this._fb_room.child('goal');
   
- 
   this.c = c;
   this.playerName = playerName;
   this.player = null;
@@ -21,34 +20,62 @@ var Room = function(roomName, playerName, c) {
   this.particles = {};
   this.spout = null;
   this.goal = null;
-  
 
   //check/create player
   this._fb_players.once('value', function(data) {
     // firebase url for this player
+    // if you join the room first, you're the host
+    var host = false;
+    if (!data.val()) {
+      console.log('host');
+      host = true;
+    } 
     var url = this._fb_players.child(playerName);
     if (!data.val() || !data.val()[playerName]) {
-      this.player = c.entities.create(Player, {center: {x: 100, y: 100}, name: playerName, url: url});
+      this.player = c.entities.create(Player, {center: {x: 100, y: 100}, name: playerName, url: url, host: host});
       this.player.syncAll();
     } else {
       var center = data.val()[playerName].center;
+      host = data.val()[playerName].host;
       this.player = c.entities.create(Player, {center: center, name: playerName, url: url});
+    }
+    
+     //check/create spout 
+     // if you're host, create a Spout
+     // otherwise, create a DummySpout
+    this._fb_spout.once('value', function(data) {
+      // firebase url for this spout
+      var url = this._fb_spout.child(1);
+      // no spout in room and you're the host - create one
+      if (!data.val()) { 
+        var center = { x:Math.random() * 500, y:10 };
+        this.spout = this.c.entities.create(Spout, { center: center, url: url, particleUrl: this._fb_particles});
+        url.update({center: center});
+      } else {
+        // spout in room - if you're host, create a Spout
+        // otherwise create a DummySpout
+        var center = data.val()[1].center;
+        if (host) {
+          console.log('host!')
+          this.spout = this.c.entities.create(Spout, { center: center, url: url, particleUrl: this._fb_particles});
+        } else {
+          console.log('not host!')
+          this.spout = this.c.entities.create(DummySpout, { center: center });
+        }
+      }
+    }, this)
+    
+    
+    if (!host) {
+      this._fb_particles.on('child_added', function(data) {
+        var center = data.val().center;
+        var url = this._fb_particles.child(data.name());
+        this.particles[data.name()] = c.entities.create(DummyParticle, {center: center, url: url, id: data.name()})
+      }, this);
     }
   }, this)
   
-  //check/create spout
-  this._fb_spout.once('value', function(data) {
-    // firebase url for this spout
-    var url = this._fb_spout.child(1);
-    if (!data.val()) {
-      var center = { x:Math.random() * 500, y:10 };
-      this.spout = this.c.entities.create(Spout, { center: center });
-      url.update({center: center});
-    } else {
-      var center = data.val()[1].center;
-      this.spout = this.c.entities.create(Spout, { center: center });
-    }
-  }, this)
+ 
   
   //check/create goal
   this._fb_goal.once('value', function(data) {
@@ -56,11 +83,11 @@ var Room = function(roomName, playerName, c) {
     var url = this._fb_goal.child(1);
     if (!data.val()) {
       var center = { x:Math.random() * 500, y:490 };
-      this.goal = this.c.entities.create(GoalBucket, { center: center });
+      this.goal = this.c.entities.create(GoalBucket, { center: center, url: url });
       url.update({center: center});
     } else {
       var center = data.val()[1].center;
-      this.goal = this.c.entities.create(GoalBucket, { center: center });
+      this.goal = this.c.entities.create(GoalBucket, { center: center, url: url });
     }
   }, this)
   
@@ -86,7 +113,6 @@ var Room = function(roomName, playerName, c) {
   // check/update other player positions
   this._fb_players.on('child_changed', function(data) {
     if (data.name() !== playerName) {
-      console.log(data.name(), data.val());
       var name = data.name();
       var center = data.val().center;
       var angle = data.val().angle;
@@ -95,14 +121,5 @@ var Room = function(roomName, playerName, c) {
       this.displayNames[name].center = center;
     }
   }, this);
-
-  this._fb_particles.on('child_added', function(data) {
-    var center = data.val().center;
-    // check if particle already present
-    if (this.players[data.name()] === undefined) {
-      // create particles
-       this.players[data.name()] = c.entities.create(Particle, {center: center})
-    }
-  }, this);
-
+  
 }

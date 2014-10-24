@@ -145,5 +145,5 @@ Player.prototype.sync = function() {
 // sync all player info with firebase
 // should be called when player first created
 Player.prototype.syncAll = function() {
-  this.url.update({center: this.center, angle: this.angle, color: this.color, size: this.size});
+  this.url.update({center: this.center, angle: this.angle, color: this.color, size: this.size, host: this.host});
 }
