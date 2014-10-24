@@ -47,6 +47,26 @@ npm install
 bower install
 ```
 
+### Class API
+
+#### Game
+
+#### Room
+
+#### Player
+
+#### DisplayName
+
+#### OtherPlayer
+
+#### Particle
+
+#### GameScore
+
+#### Spout
+
+#### GoalBucket
+
 ### Roadmap
 
 [![Stories in Ready](https://badge.waffle.io/unexpected-lion/ourglass.svg?label=ready&title=Ready)](http://waffle.io/unexpected-lion/ourglass)
