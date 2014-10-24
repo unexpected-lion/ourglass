@@ -44,6 +44,5 @@ Particle.prototype = {
 };
 
 Particle.prototype.sync = function() {
-  //debugger;
   this.url.update({center: this.center});
 }

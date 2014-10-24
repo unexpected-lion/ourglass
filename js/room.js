@@ -29,7 +29,6 @@ var Room = function(roomName, playerName, c) {
     // if you join the room first, you're the host
     var host = false;
     if (!data.val()) {
-      console.log('host');
       host = true;
     } 
     var url = this._fb_players.child(playerName);
@@ -58,10 +57,8 @@ var Room = function(roomName, playerName, c) {
         // otherwise create a DummySpout
         var center = data.val()[1].center;
         if (host) {
-          console.log('host!')
           this.spout = this.c.entities.create(Spout, { center: center, url: url, particleUrl: this._fb_particles});
         } else {
-          console.log('not host!')
           this.spout = this.c.entities.create(DummySpout, { center: center });
         }
       }
@@ -96,7 +93,6 @@ var Room = function(roomName, playerName, c) {
 
   // check/add other players
   this._fb_players.on('child_added', function(data) {
-    console.log(data.name(), data.val());
     var center = data.val().center;
     var displayName = data.name();
     // check if player already added

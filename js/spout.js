@@ -1,5 +1,4 @@
 var Spout = function(game, settings, position) {
-  console.log('creating spout')
   this.c = game.c;
   for (var i in settings) {
     this[i] = settings[i];
@@ -36,8 +35,6 @@ Spout.prototype = {
     var particles = this.c.entities.all(Particle);
     var particleUrl = this.particleUrl.child(this.counter);
     if (particles.length < 2) {
-      console.log(particles.length);
-      //debugger;
       this.c.entities.create(Particle, { center: {x: this.center.x, y: this.center.y + this.size.y + 1}, url: particleUrl, id: this.counter});
       this.counter++;
     }
