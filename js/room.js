@@ -32,13 +32,8 @@ var Room = function(roomName, playerName, c) {
     // if you join the room first, you're the host
     var host = false;
     if (!data.val()) {
-      // host player - on disconnect, remove room
-      this._fb_room.onDisconnect().remove()
       host = true;
-    } else {
-      // guest player - on disconnect, remove yourself only
-      url.onDisconnect().remove();
-    }
+    } 
     
     if (!data.val() || !data.val()[playerName]) {
       this.player = c.entities.create(Player, {center: {x: 100, y: 100}, name: playerName, url: url, host: host});
