@@ -47,25 +47,36 @@ npm install
 bower install
 ```
 
-### Class API
+## Class API
 
-#### Game
+### SimpleGame
 
-#### Room
+### Room
 
-#### Player
+### Player
+Defined as taking arguments: game(instance), settings(an object), however, with coquette, best instantiated from within the game class itself or another class that has been instantiated within the game class by invoking:
+`this.c.entities.create(Player,{optionsObj})`
+options:
+  size = {x: _width_, y: _height_}
+  color = _string_
+  angle = _integer_
+  
+options can also be hardcoded to the player class by defining `this.size` etc.
 
-#### DisplayName
+#### Player#collision(other):
+function invoked upon collision, and passes the object being collided as `other`
 
-#### OtherPlayer
+### DisplayName
 
-#### Particle
+### OtherPlayer
 
-#### GameScore
+### Particle
 
-#### Spout
+### GameScore
 
-#### GoalBucket
+### Spout
+
+### GoalBucket
 
 ### Roadmap
 
