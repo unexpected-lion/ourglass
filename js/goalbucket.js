@@ -12,11 +12,6 @@ var GoalBucket = function(game, settings, position) {
 
 GoalBucket.prototype = {
 
-  win: function(){
-    clearTimeout(this.c.entities.all(Spout)[0].endCode);
-    onGameOver();
-  },
-
   collision: function(other) {
     if (this.c.entities.all(Particle).indexOf(other) === -1) {
         other.center.y -= 30;
@@ -25,16 +20,7 @@ GoalBucket.prototype = {
       other.url.remove();
       // remote from game
       this.c.entities.destroy(other);
-      this.score++;
-      this.c.entities.all(GameScore)[0].score++;
-      this.checkScore();
-    }
-  },
-
-  checkScore: function(){
-    if (this.score > 49 && !this.won){
-      this.won = true;
-      this.win();
+      this.c.entities.all(GameScore)[0].incrementAndSync();
     }
   },
 

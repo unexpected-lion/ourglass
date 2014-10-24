@@ -3,7 +3,7 @@
 var SimpleGame = function(autoFocus, playerName, roomName) {
   this.c = new Coquette(this, "simple-canvas", 800, 500, "#000", autoFocus);
 
-  this.c.entities.create(GameScore, { center: {x:700, y:70} });
+  //this.c.entities.create(GameScore, { center: {x:700, y:70} });
 
   // all entities on the board can be accessed by calling:
     // this.c.entities.all()
