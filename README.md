@@ -54,8 +54,11 @@ bower install
 ### Room
 
 ### Player
-Defined as taking arguments: game(instance), settings(an object), however, with coquette, best instantiated from within the game class itself or another class that has been instantiated within the game class by invoking:
+Defined as taking arguments: game(instance), settings(an object)
+
+However, with coquette, best instantiated from within the game class itself or another class:
 `this.c.entities.create(Player,{optionsObj})`
+
 options:
   size = {x: _width_, y: _height_}
   color = _string_
