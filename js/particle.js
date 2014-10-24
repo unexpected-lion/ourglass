@@ -25,6 +25,7 @@ Particle.prototype = {
       this.center.y = this.c.entities.all(Spout)[0].center.y;
       this.center.x = this.c.entities.all(Spout)[0].center.x;
     }
+    this.sync();
   },
 
   draw: function(ctx) {
@@ -41,3 +42,8 @@ Particle.prototype = {
   }
 
 };
+
+Particle.prototype.sync = function() {
+  //debugger;
+  this.url.update({center: this.center});
+}
