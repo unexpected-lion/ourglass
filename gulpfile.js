@@ -38,6 +38,8 @@ gulp.task('scripts', function() {
       'js/otherplayer.js',
       'js/goalbucket.js',
       'js/spout.js',
+      'js/displayname.js',
+      'js/gamescore.js',
       'js/room.js',
       'js/main.js'
     ])
