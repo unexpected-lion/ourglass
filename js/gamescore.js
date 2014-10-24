@@ -27,10 +27,7 @@ GameScore.prototype.sync = function() {
 
 GameScore.prototype.win = function(){
   // check for spout
-  var spout = this.c.entities.all(Spout)[0];
-  if (spout) {
-    clearTimeout(spout.endCode);
-  }
+  this.c.room.deleteRoom();
   onGameOver();
 };
 
