@@ -26,12 +26,15 @@ var Room = function(roomName, playerName, c) {
   //check/create player
   this._fb_players.once('value', function(data) {
     // firebase url for this player
+    var url = this._fb_players.child(playerName);
+    url.onDisconnect().remove();
+    
     // if you join the room first, you're the host
     var host = false;
     if (!data.val()) {
       host = true;
     } 
-    var url = this._fb_players.child(playerName);
+    
     if (!data.val() || !data.val()[playerName]) {
       this.player = c.entities.create(Player, {center: {x: 100, y: 100}, name: playerName, url: url, host: host});
       this.player.syncAll();
@@ -91,6 +94,13 @@ var Room = function(roomName, playerName, c) {
   }, this)
   
 
+  this.addPlayers();
+  
+  this.addScore();
+  
+}
+
+Room.prototype.addPlayers = function() {
   // check/add other players
   this._fb_players.on('child_added', function(data) {
     var center = data.val().center;
@@ -98,9 +108,9 @@ var Room = function(roomName, playerName, c) {
     // check if player already added
     if (this.players[data.name()] === undefined) {
       // create players in coquette
-      if (data.name() !== playerName) {
-        this.players[data.name()] = c.entities.create(OtherPlayer, { center: center });
-        this.displayNames[data.name()] = c.entities.create(DisplayName, {
+      if (data.name() !== this.playerName) {
+        this.players[data.name()] = this.c.entities.create(OtherPlayer, { center: center });
+        this.displayNames[data.name()] = this.c.entities.create(DisplayName, {
           center: center,
           displayName: data.name()
         });
@@ -110,7 +120,7 @@ var Room = function(roomName, playerName, c) {
 
   // check/update other player positions
   this._fb_players.on('child_changed', function(data) {
-    if (data.name() !== playerName) {
+    if (data.name() !== this.playerName) {
       var name = data.name();
       var center = data.val().center;
       var angle = data.val().angle;
@@ -120,7 +130,19 @@ var Room = function(roomName, playerName, c) {
     }
   }, this);
   
-  this.addScore();
+  // remove players who leave
+  this._fb_players.on('child_removed', function(data) {
+    // if host leaves, end game - delete the room
+    if (data.val().host) {
+      this.deleteRoom();
+      onHostLeave();
+    }
+    else {
+      this.c.entities.destroy(this.players[data.name()]);
+      this.c.entities.destroy(this.displayNames[data.name()]);
+      delete this.players[data.name()];
+    }
+  }, this);
   
 }
 
