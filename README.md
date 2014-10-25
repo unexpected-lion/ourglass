@@ -165,7 +165,30 @@ This class inherits its methods from `Player`.
 #### OtherPlayer#update():
 This is a purposely empty function, in order to overwite the function inherited from `Player`. Firebase controlls the movement rather than this function.
 
+
 ### Particle
+This is the class which represents each particle of 'sand' moving down the screen, initialized by Spout (in Spout#emit()).
+
+#### Particle#update():
+In each step the Particle increments its y coordinate and accelerates as it moves downwards, simulating gravity (`this.center.y += this.center.y * .01`). Once the particle gets to the bottom of the screen, it goes back to the position of the Spout.
+
+#### Particle#draw():
+Draws a rectangle on the canvas to represent the particle.
+
+#### Particle#getMaxY():
+Helper function to determine when particle reaches bottom of the canvas. 
+
+#### Particle#sync():
+Updates particle's position in Firebase.
+
+### DummyParticle
+Similar to Particle but is not the "source of truth". No update function but instead listens to updated positions in Firebase. So if a Particle instance moves in the host's browser, then the DummyParticle instance will move in other browsers.
+
+#### DummyParticle#draw():
+see Particle class
+
+#### DummyParticle#getMaxY():
+see Particle class
 
 
 ### GameScore
@@ -184,9 +207,40 @@ settings:
 #### GameScore#draw(ctx):
 Function invoked every frame (ie every second) with the canvas instance passed as `ctx`. This is where the class is actually rendered by using HTML5 canvas functions. `ctx.fillText()` is used to render a score to the canvas.
 
+
 ### Spout
+The source of sand in the "ourglass", the Spout is responsible in the host's browser to generate particles of sand (every 500ms) which players funnel to the goalbucket. Spout's `counter` property tracks the "id" of each Particle instance in Firebase.
+
+#### Spout#collision():
+Moves other colliding body downwards by 20px (`other.center.y += 20`)
+
+#### Spout#draw():
+Draws rectangular spout.
+
+#### Spout#emit():
+Creates new Particle and syncs it with Firebase.
+
+
+### DummySpout
+Similar concept to the Particle/DummyParticle dichotomy, DummySpout is like a fake Spout but actually does not listen to Firebase. All DummySpout does is render and display on a user's screen.
+
+#### DummySpout#collision():
+see Spout class
+
+#### DummySpout#draw():
+see Spout class
+
 
 ### GoalBucket
+
+GoalBucket is a rectangle on the bottom of the canvas and is the area users's target to funnel sand from the spout. It's purpose is to listen for Particle collisions and then call the appropriate methods on GameScore.
+
+#### GoalBucket#collision():
+If colliding "other" is not a Particle, move up 30px. Otherwise (particle has collided), then remove particle from the Firebase document and invoke `incrementAndSync()` on the GameScore instance.
+
+#### GoalBucket#draw():
+Draw rectangle to represent GoalBucket visually.
+
 
 ## Roadmap
 
