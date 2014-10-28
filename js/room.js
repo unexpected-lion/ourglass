@@ -72,7 +72,7 @@ var Room = function(roomName, playerName, c) {
       this._fb_particles.on('child_added', function(data) {
         var center = data.val().center;
         var url = this._fb_particles.child(data.name());
-        this.particles[data.name()] = c.entities.create(DummyParticle, {center: center, url: url, id: data.name()})
+        this.particles[data.name()] = this.c.entities.create(DummyParticle, {center: center, url: url, id: data.name()})
       }, this);
     }
   }, this)
